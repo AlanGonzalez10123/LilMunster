@@ -1,81 +1,60 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const chatInput = document.getElementById("chat-input");
-    const sendButton = document.getElementById("send-button");
-    const chatMessages = document.getElementById("chat-messages");
-  
-    // Define the API URL
-    const apiUrl = 'http://localhost:5192';
-  
-    sendButton.addEventListener("click", sendMessage);
-  
-    async function sendMessage() {
-      const message = chatInput.value;
-      if (message.trim() === "") return;
-  
-      chatMessages.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
-  
-      try {
-        const response = await fetch(`${apiUrl}/pet/chat`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ text: message }),
-        });
-  
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-  
-        const data = await response.json();
-        chatMessages.innerHTML += `<p><strong>Pet:</strong> ${data.response}</p>`;
-      } catch (error) {
-        console.error("Error details:", error);
-        chatMessages.innerHTML += `<p>Sorry, I couldn't connect to the pet right now. Error: ${error.message}</p>`;
-      }
-  
-      chatInput.value = "";
-    }
-  });
-
-document.addEventListener('DOMContentLoaded', function() {
-    const iframe = document.getElementById('chatframe');
-    // Replace with your actual embed code from Azure Bot Service
-    iframe.src = 'https://webchat.botframework.com/embed/YOUR_BOT_ID?s=VZMgcFC1hbg.zXBkugz_XqR6INajYCjXoJPIqDcE9rTatQV09O4spgU';
-});
-
-document.addEventListener('DOMContentLoaded', function() {
+  const chatInput = document.getElementById("chat-input");
+  const sendButton = document.getElementById("send-button");
+  const chatMessages = document.getElementById("chat-messages");
   const chatbox = document.getElementById('chatbox');
-  const userInput = document.getElementById('user-input');
+
+  // Define the API URL - make sure this matches your Azure Function URL
+  const apiUrl = 'http://localhost:3000';
 
   function addMessage(message, isUser) {
-    const messageElement = document.createElement('p');
-    messageElement.textContent = `${isUser ? 'You' : 'Bot'}: ${message}`;
-    chatbox.appendChild(messageElement);
-    chatbox.scrollTop = chatbox.scrollHeight;
+      const messageElement = document.createElement('p');
+      messageElement.innerHTML = `<strong>${isUser ? 'You' : 'Bot'}:</strong> ${message}`;
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
   }
 
-  userInput.addEventListener('keypress', function(e) {
-    if (e.key === 'Enter' && this.value) {
-      const message = this.value;
-      addMessage(message, true);
-      this.value = '';
+  async function sendMessage() {
+      const message = chatInput.value;
+      if (message.trim() === "") return;
 
-      fetch('http://localhost:3000/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message })
-      })
-      .then(response => response.json())
-      .then(data => {
-        addMessage(data.reply, false);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        addMessage('Sorry, I encountered an error.', false);
-      });
-    }
+      addMessage(message, true);
+      chatInput.value = "";
+
+      try {
+        const response = await fetch(`${apiUrl}/chat`, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ message: message }),
+          });
+
+          if (!response.ok) {
+              throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          if (data.reply) {
+              addMessage(data.reply, false);
+          } else {
+              console.error('Unexpected response:', data);
+              addMessage('Sorry, I received an unexpected response.', false);
+          }
+      } catch (error) {
+          console.error("Error details:", error);
+          addMessage(`Sorry, I couldn't connect right now. Error: ${error.message}`, false);
+      }
+  }
+
+  sendButton.addEventListener("click", sendMessage);
+
+  chatInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+          sendMessage();
+      }
   });
 
+  // Initial greeting
   addMessage('Hello! How can I assist you with your wellness today?', false);
 });
