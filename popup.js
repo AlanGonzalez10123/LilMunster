@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     chatMessages.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
 
     try {
-      const response = await fetch("https://localhost:5001/pet/chat", {
+      const response = await fetch("https://localhost:5192/pet/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
