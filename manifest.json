@@ -1,0 +1,10 @@
+{
+    "manifest_version": 3,
+    "name": "Pet AI Companion",
+    "version": "1.0",
+    "description": "A virtual pet with AI chatbot capabilities",
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "permissions": ["storage"]
+  }
