@@ -9,6 +9,8 @@
     "permissions": ["storage"],
     "host_permissions": [
       "http://localhost:5192/*",
-      "https://localhost:5192/*"
+      "https://localhost:5192/*",
+      "https://webchat.botframework.com/*"
+      
     ]
   }

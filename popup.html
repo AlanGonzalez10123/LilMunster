@@ -1,21 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Popup</title>
+  <title>Wellness Chatbot</title>
+  <style>
+    body { width: 300px; padding: 10px; }
+    #chatbox { height: 300px; overflow-y: scroll; border: 1px solid #ccc; padding: 10px; margin-bottom: 10px; }
+    #user-input { width: 100%; padding: 5px; }
+  </style>
 </head>
-
 <body>
-    <h1>THIS IS THE POPUP</h1>
-    <div id="pet-container"></div>
-    <div id="chat-container">
-        <input type="text" id="chat-input" placeholder="Chat with your pet...">
-        <button id="send-button">Send</button>
-        <div id="chat-messages"></div>
-    </div>
-    <script src="popup.js"></script>
+  <div id="chatbox"></div>
+  <input type="text" id="user-input" placeholder="Type your message...">
+  <script src="popup.js"></script>
 </body>
-
 </html>

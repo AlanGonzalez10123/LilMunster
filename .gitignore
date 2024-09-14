@@ -94,3 +94,5 @@ node_modules/
 # Temp files
 *.tmp
 *.temp
+
+.env

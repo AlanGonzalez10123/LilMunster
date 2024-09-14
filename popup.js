@@ -37,3 +37,45 @@ document.addEventListener("DOMContentLoaded", function () {
       chatInput.value = "";
     }
   });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const iframe = document.getElementById('chatframe');
+    // Replace with your actual embed code from Azure Bot Service
+    iframe.src = 'https://webchat.botframework.com/embed/YOUR_BOT_ID?s=VZMgcFC1hbg.zXBkugz_XqR6INajYCjXoJPIqDcE9rTatQV09O4spgU';
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const chatbox = document.getElementById('chatbox');
+  const userInput = document.getElementById('user-input');
+
+  function addMessage(message, isUser) {
+    const messageElement = document.createElement('p');
+    messageElement.textContent = `${isUser ? 'You' : 'Bot'}: ${message}`;
+    chatbox.appendChild(messageElement);
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }
+
+  userInput.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter' && this.value) {
+      const message = this.value;
+      addMessage(message, true);
+      this.value = '';
+
+      fetch('http://localhost:3000/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message })
+      })
+      .then(response => response.json())
+      .then(data => {
+        addMessage(data.reply, false);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        addMessage('Sorry, I encountered an error.', false);
+      });
+    }
+  });
+
+  addMessage('Hello! How can I assist you with your wellness today?', false);
+});
