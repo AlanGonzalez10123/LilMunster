@@ -3,17 +3,24 @@
   "name": "Pet Monster Companion",
   "version": "1.0",
   "description": "A virtual pet monster with AI chatbot capabilities",
+  "permissions": [
+    "alarms",
+    "notifications",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "action": {
     "default_popup": "popup.html"
   },
-  "permissions": ["storage", "activeTab"],
-  "web_accessible_resources": [
-    {
-      "resources": ["*.gif"],
-      "matches": ["<all_urls>"]
-    }
-  ],
   "chrome_url_overrides": {
     "newtab": "pet.html"
+  }, 
+  "icons": {
+    "16": "icon2.png",
+    "32": "icon2.png",
+    "48": "icon48.png",
+    "128": "icon2.png"
   }
 }

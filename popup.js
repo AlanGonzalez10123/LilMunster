@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function addMessage(message, isUser) {
       const messageElement = document.createElement('p');
-      messageElement.innerHTML = `<strong>${isUser ? 'You' : 'Bot'}:</strong> ${message}`;
+      messageElement.innerHTML = `<strong>${isUser ? 'You' : 'Munster'}:</strong> ${message}`;
       chatMessages.appendChild(messageElement);
       chatMessages.scrollTop = chatMessages.scrollHeight;
   }
@@ -56,5 +56,5 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Initial greeting
-  addMessage('Hello! How can I assist you with your wellness today?', false);
+  addMessage('Hiya, what\'s going on! ', false);
 });
