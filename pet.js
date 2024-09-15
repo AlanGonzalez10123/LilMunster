@@ -32,10 +32,11 @@ function feedPet() {
     fullness = Math.min(1000, fullness + 10);
     happiness = Math.min(100, happiness + 5);
     pet.style.backgroundImage = "url('throw.gif')";
+    updatePetStatus();
     setTimeout(() => {
         isAnimating = false;
-        updatePetStatus();
-    }, 900); // Adjust time based on your GIF duration
+        
+    }, 600); // Adjust time based on your GIF duration
 }
 
 function petPet() {
@@ -44,10 +45,11 @@ function petPet() {
     happiness = Math.min(100, happiness + 10);
     fullness = Math.max(0, fullness - 5);
     pet.style.backgroundImage = "url('idleBlink.gif')";
+    updatePetStatus();
     setTimeout(() => {
         isAnimating = false;
-        updatePetStatus();
-    }, 900); // Adjust time based on your GIF duration
+        
+    }, 600); // Adjust time based on your GIF duration
 }
 
 feedBtn.addEventListener('click', feedPet);

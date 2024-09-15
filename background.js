@@ -1,6 +1,17 @@
 // Set up the alarm when the extension is installed or updated
+
+const messages = ['I want to see you! Click to check in!','How are you feeling?', "Hi, take a brain break!", "How about a walk?", "Have you eaten today?", "How about a stretch?"]
+
+let i = 0;
+
+function getNextMessage(){
+    message = messages[i]
+    i = (i + 1) % messages.length;
+    return message;
+}
+
 chrome.runtime.onInstalled.addListener(() => {
-    chrome.alarms.create('checkInAlarm', { periodInMinutes: 1 });
+    chrome.alarms.create('checkInAlarm', { periodInMinutes: 60 });
   });
   
   // Listen for the alarm
@@ -10,8 +21,8 @@ chrome.runtime.onInstalled.addListener(() => {
       chrome.notifications.create({
         type: 'basic',
         iconUrl: 'icon.png',
-        title: 'Pet Monster Check-in',
-        message: 'Your pet monster wants to see you! Click here to check in.',
+        title: 'Lil Munster Check In',
+        message: getNextMessage(),
         buttons: [{ title: 'Check In' }],
         requireInteraction: true
       });

@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Pet Monster Companion",
+  "name": "Lil Munster",
   "version": "1.0",
   "description": "A virtual pet monster with AI chatbot capabilities",
   "permissions": [
@@ -18,9 +18,9 @@
     "newtab": "pet.html"
   }, 
   "icons": {
-    "16": "icon2.png",
+    "16": "icon16.png",
     "32": "icon2.png",
     "48": "icon48.png",
-    "128": "icon2.png"
+    "128": "icon128.png"
   }
 }
