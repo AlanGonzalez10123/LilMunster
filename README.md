@@ -1,1 +1,16 @@
-# LilMunster
+## Inspiration
+The idea for Lil Munster was born from a desire to support students and professionals in balancing productivity with mental well-being. With increasing workloads and stress, having a digital companion to check in on users, offer mental health breaks, and assist with assignments can be a game-changer. The concept was inspired by the need for personalized digital tools that promote self-care while helping users stay on track.
+## What it does
+Lil Munster is a Chrome extension designed to interact with users throughout the day. It features a virtual character that checks in, asking about the user's well-being and encouraging mental health breaks. The character also provides AI-powered homework help, breaking down complex problems and offering tailored solutions to keep users on track with their studies or tasks. It helps manage both productivity and wellness in an engaging and personalized way.
+## Challenges we ran into
+One of the biggest challenges was creating a seamless balance between the mental health check-ins and the homework help feature as well as combining the game-like aspect with the AI-powered chat box. It also was difficult to animate the "munster" as we had to use compatible Sprite sheets that allowed us to great gifs.  It was also difficult to ensure the character could intelligently switch between these two roles while still being user-friendly. Additionally, making sure the AI accurately understood and responded to a variety of academic questions as well as asked mental health checks at an appropriate time
+## Accomplishments that we're proud of
+We’re particularly proud of developing a character that not only provides practical support but also fosters a sense of companionship for users. The integration of AI-powered homework assistance was a major milestone, making the extension both fun and functional. We've also received positive feedback on the extension’s interface, which is both user-friendly and engaging.
+## What we learned
+Throughout the development process, we learned how to better integrate user experience with functional AI solutions. We also deepened our understanding of how digital tools can contribute to mental well-being, reinforcing the importance of empathetic design in tech products.
+## How we built it
+The extension was built using HTML, CSS, and JavaScript for the user interface and front-end functionalities. For the AI-powered assignment help, we integrated Azure OpenAI's language model via an API, allowing the character to assist with a wide range of homework queries. The character animation and interactions were crafted with simple JavaScript logic, making the experience intuitive and responsive.
+## What's next for Lil Munster
+The next steps include expanding Lil Munster’s capabilities to offer more personalized study schedules and project management assistance. We also plan to integrate more advanced AI features for assignment help, making the tool applicable to a wider range of academic and professional needs. Ultimately, we aim to evolve Lil Munster into a full-fledged productivity and wellness companion that can be customized by users according to their preferences.
+
+# Unfortunately, we only had time for local deployment, so we do not have a link or some access to a live version.
