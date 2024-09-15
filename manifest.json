@@ -1,17 +1,19 @@
 {
-    "manifest_version": 3,
-    "name": "Pet AI Companion",
-    "version": "1.0",
-    "description": "A virtual pet with AI chatbot capabilities",
-    "action": {
-      "default_popup": "popup.html"
-    },
-    "permissions": ["storage", "activeTab","scripting"],
-    "host_permissions": [
-      "http://localhost:5192/*",
-      "https://localhost:5192/*",
-      "https://webchat.botframework.com/*",
-      "http://localhost:3000/*"
-      
-    ]
+  "manifest_version": 3,
+  "name": "Pet Monster Companion",
+  "version": "1.0",
+  "description": "A virtual pet monster with AI chatbot capabilities",
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": ["storage", "activeTab"],
+  "web_accessible_resources": [
+    {
+      "resources": ["*.gif"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "chrome_url_overrides": {
+    "newtab": "pet.html"
   }
+}

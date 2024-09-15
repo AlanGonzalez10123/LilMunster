@@ -3,11 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Pet Monster</title>
     <style>
-    body { width: 300px; padding: 10px; }
+        body { width: 300px; padding: 10px; font-family: Arial, sans-serif; }
+        #pet-container { width: 200px; height: 200px; margin: 0 auto; position: relative; }
+        #pet { width: 100%; height: 100%; background: url('idle.gif') no-repeat center; background-size: contain; }
+        .bar { width: 100%; height: 20px; background-color: #ddd; margin: 10px 0; }
+        .bar-fill { height: 100%; transition: width 0.5s ease-in-out; }
+        #happiness-fill { background-color: #ff9999; }
+        #hunger-fill { background-color: #99ff99; }
+        button { margin: 5px; padding: 5px 10px; }
     </style>
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <ul>
@@ -15,6 +21,14 @@
         <li><a href="pet.html">Pet</a></li>
     </ul>
 
-    <h1>This is the second page</h1>
+
+    <div id="pet-container">
+        <div id="pet"></div>
+    </div>
+    <div class="bar"><div id="happiness-fill" class="bar-fill" style="width: 50%;"></div></div>
+    <div class="bar"><div id="hunger-fill" class="bar-fill" style="width: 50%;"></div></div>
+    <button id="feed-btn">Feed</button>
+    <button id="pet-btn">Pet</button>
+    <script src="pet.js"></script>
 </body>
 </html>
